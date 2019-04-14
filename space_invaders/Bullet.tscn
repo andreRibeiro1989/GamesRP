@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Bullet.gd" type="Script" id=1]
+[ext_resource path="res://dodge_assets/art/bullets/bullets_pack1.jpg" type="Texture" id=2]
+[ext_resource path="res://CollisionShape2D.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.11233
+height = 9.85204
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="elipse" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 8, 22, 12, 20 )
+
+[node name="line" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 10, 92, 8, 18 )
+
+[node name="round" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 8, 22, 12, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+script = ExtResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
